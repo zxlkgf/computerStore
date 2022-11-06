@@ -14,6 +14,6 @@
 
 <!--    Product findProductById(Integer id);-->
     <select id="findProductById" resultType="com.zxl.store.entity.Product">
-        SELECT id,title,price,image,status FROM t_product WHERE id = #{id}
+        SELECT id,title,price,image,sell_point,status FROM t_product WHERE id = #{id}
     </select>
 </mapper>

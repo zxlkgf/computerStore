@@ -68,4 +68,11 @@ public interface CartMapper {
      * @return
      */
     Integer updateCartNumByCid(Integer num,Integer cid,String modifiedUser,Date modifiedTime);
+
+    /**
+     * 按照cids查询购物车数据
+     * @param cids
+     * @return
+     */
+    List<CartVo> findVoByCid(Integer[] cids);
 }

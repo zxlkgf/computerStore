@@ -121,4 +121,11 @@ public class IAddressServiceImpl implements IAddressService {
         //判断是否出现异常
         if(row!=1)throw new DeleteException("删除用户收货地址时出现未知异常");
     }
+
+    @Override
+    public Address findAddressByAid(Integer aid) {
+        Address data = addressMapper.findByAid(aid);
+        if(data==null)throw new AddressNotFoundException("用户收货地址数据不存在");
+        return data;
+    }
 }

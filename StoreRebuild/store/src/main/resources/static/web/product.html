@@ -84,11 +84,33 @@
 					}
 				});
 			}
+
 			$(function () {
 				//页面加载完成时填充程序
 				showInThisProductHtml();
 				//加入购物车
 				addProductToCart();
+				//绑定收藏事件
+				$("#btn-add-to-collect").click(function () {
+					if (confirm("确定要将此商品加入收藏吗？")) {
+						$.ajax({
+							url: "/favorite/addFavorite",
+							type: "post",
+							data: {"pid": pid},
+							dataType: "json",
+							success: function (res) {
+								if (res.state == 200) {
+									alert("收藏成功！");
+								} else {
+									alert(res.message);
+								}
+							},
+							error: function (err) {
+								alert("服务器出现错误，加入购物车失败！")
+							}
+						})
+					}
+				});
 			});
 		</script>
 	</head>

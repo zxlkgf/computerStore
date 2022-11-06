@@ -44,4 +44,14 @@ public interface ICartService {
      * @param modifiedUser
      */
     void updateCartNumByCid(Integer cid,Integer num,String modifiedUser);
+
+    /**
+     * 按照cids查询购物车数据
+     * @param cids
+     * @return
+     */
+    List<CartVo> getVoByCid(Integer[] cids);
+
+    Cart findCartByCid(Integer cid);
+
 }

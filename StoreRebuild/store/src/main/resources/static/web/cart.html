@@ -90,8 +90,19 @@
 					$("#selectTotal").html(vselectTotal);
 					$("#selectCount").html(vselectCount);
 				}
-
 			}
+			//检测用户是否已经选择了商品来决定是否放行
+			function checkIsNotChoose(){
+				// let chooseNum = $("input[type='checkbox']:checked").length
+				let chooseNum = $(".ckitem:checked").length
+				//如果chooseNum的值等于0代表用户没任何选择商品不允许跳转
+				if (chooseNum === 0){
+					alert("请先选择需要结算的购物车商品！！！")
+					return false;
+				}
+			}
+
+
 			/*按加号数量增*/
 			function addNum(num) {
 				var n = parseInt($("#goodsCount"+num).val());
@@ -304,7 +315,10 @@
 						<p class="panel-title"><span class="fa fa-shopping-cart"></span> 购物车</p>
 					</div>
 					<div class="panel-body">
-						<form action="orderConfirm.html" role="form" >
+						<form id="goToOrderConfirm"
+							  action="orderConfirm.html"
+							  onsubmit="return checkIsNotChoose()"
+							  role="form">
 							<!--购物车表格开始-->
 							<table class="cart-table" width="100%">
 								<thead>

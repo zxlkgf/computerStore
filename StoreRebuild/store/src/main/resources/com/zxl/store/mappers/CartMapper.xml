@@ -51,4 +51,27 @@
         UPDATE t_cart SET num = #{num},modified_user = #{modifiedUser},modified_time = #{modifiedTime}
                       WHERE cid = #{cid}
     </update>
+
+<!--    List<CartVo> findVoByCid(Integer[] cids);-->
+    <select id="findVoByCid" resultType="com.zxl.store.vo.CartVo">
+        SELECT
+        c.cid,
+        c.uid,
+        c.pid,
+        c.price,
+        c.num,
+        p.title,
+        p.image,
+        p.price AS realPrice
+        FROM t_cart c
+        LEFT JOIN  t_product p
+        ON    c.pid=p.id
+        WHERE c.cid IN (
+            <foreach collection="array" item="cid" separator=",">
+                #{cid}
+            </foreach>
+        )
+        ORDER BY c.created_time DESC
+    </select>
+
 </mapper>

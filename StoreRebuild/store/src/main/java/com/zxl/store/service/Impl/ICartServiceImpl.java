@@ -91,5 +91,18 @@ public class ICartServiceImpl implements ICartService {
         }
     }
 
+    @Override
+    public List<CartVo> getVoByCid(Integer[] cids) {
+        //查询数据
+        List<CartVo> data = cartMapper.findVoByCid(cids);
+        //传输数据
+        return data;
+    }
+
+    @Override
+    public Cart findCartByCid(Integer cid) {
+        return cartMapper.findCartByCid(cid);
+    }
+
 
 }
