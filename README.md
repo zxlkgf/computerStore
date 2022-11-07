@@ -15,8 +15,9 @@ ___
 3.Mysql 8.0.28  
 4.IDEA 2019.2.4  
 ___  
-## 文档
-具体请参照src/markdown
+## 参照内容
+开发文档具体请参照store/markdown  
+数据库表请参照store/sql_src
 ___ 
 ## 日志  
 2022/9/15  
