@@ -71,19 +71,24 @@ public class BaseController {
             result.setState(5005); //上传文件读写异常
             result.setMessage(e.getMessage());
         }
+        //favorite
+        else if(e instanceof FavoriteExistException){
+            result.setState(6000);
+            result.setMessage(e.getMessage());
+        }
 
         //其他数据库或者验证码异常
         else if (e instanceof InsertException){
-            result.setState(6000); //插入时异常
+            result.setState(9000); //插入时异常
             result.setMessage(e.getMessage());
         }else if (e instanceof UpdateException){
-            result.setState(6001); //更新时异常
+            result.setState(9001); //更新时异常
             result.setMessage(e.getMessage());
         }else if (e instanceof DeleteException){
-            result.setState(6002); //删除时异常
+            result.setState(9002); //删除时异常
             result.setMessage(e.getMessage());
         }else if (e instanceof ValidCodeNotMatchException){
-            result.setState(6002); //表示验证码不匹配
+            result.setState(9002); //表示验证码不匹配
             result.setMessage(e.getMessage());
         }
         //返回异常处理结果
