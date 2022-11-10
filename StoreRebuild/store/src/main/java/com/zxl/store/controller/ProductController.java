@@ -1,5 +1,6 @@
 package com.zxl.store.controller;
 
+import com.github.pagehelper.PageInfo;
 import com.zxl.store.entity.Product;
 import com.zxl.store.service.IProductService;
 import com.zxl.store.utils.JsonResult;
@@ -46,5 +47,13 @@ public class ProductController extends BaseController {
         //按照获得的id查询商品
         Product data = productService.findProductById(id);
         return new JsonResult<>(OK,data);
+    }
+
+    @RequestMapping(value = "/findWithTitle")
+    public JsonResult<PageInfo<Product>> findWithTitle(@PathVariable("pageNum") Integer pageNum,
+                                                       @PathVariable("pageSize") Integer pageSize,
+                                                       @PathVariable("title") String title){
+        PageInfo<Product> res = productService.findProductByTitle(title, pageNum, pageSize);
+        return new JsonResult<>(OK,res);
     }
 }

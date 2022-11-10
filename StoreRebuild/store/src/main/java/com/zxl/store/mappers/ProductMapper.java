@@ -28,4 +28,11 @@ public interface ProductMapper {
      * @return
      */
     Product findProductById(Integer id);
+
+    /**
+     * 按照输入的标题查找
+     * @param title
+     * @return
+     */
+    List<Product> findProductByTitle(String title);
 }

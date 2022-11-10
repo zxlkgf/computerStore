@@ -1,5 +1,6 @@
 package com.zxl.store.service;
 
+import com.github.pagehelper.PageInfo;
 import com.zxl.store.entity.Product;
 
 import java.util.List;
@@ -28,4 +29,13 @@ public interface IProductService {
      * @return 返回商品信息
      */
     Product findProductById(Integer id);
+
+    /**
+     * 按照标题查询
+     * @param title
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
+    PageInfo<Product> findProductByTitle(String title, Integer pageNum, Integer pageSize);
 }

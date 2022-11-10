@@ -1,5 +1,7 @@
 package com.zxl.store.service.Impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.zxl.store.entity.Product;
 import com.zxl.store.mappers.ProductMapper;
 import com.zxl.store.service.IProductService;
@@ -47,5 +49,15 @@ public class IProductServiceImpl implements IProductService {
         }
         //传输商品信息
         return res;
+    }
+
+    @Override
+    public PageInfo<Product> findProductByTitle(String title, Integer pageNum, Integer pageSize) {
+        //开启分页功能
+        PageHelper.startPage(pageNum,pageSize);
+        //查询结果
+        List<Product> res = productMapper.findProductByTitle(title);
+        //返回结果
+        return new PageInfo<>(res);
     }
 }
