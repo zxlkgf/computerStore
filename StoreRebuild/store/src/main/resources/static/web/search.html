@@ -50,14 +50,18 @@
 			var fid = 0;
 
 			//根据分页条的选择的页数进行查询
-			function PaginationListSelect(num,size) {
-				showCollectProduct(num,size)
+			function PaginationListSelect(num,size,res) {
+				//进行查询的关键字
+				let title =  $("#search").val()
+				llocation.href = "/web/search.html?title=" + title + "&pageNum=" + num + "&pageSize=" + size;
+				//填充分页条信息
+				addPaginationData(res);
 			}
 
 			//按照标题查询数据
 			function searchByTitle(pageNum,pageSize,title){
 				$.ajax({
-					url:"/product/findWithTitle" + pageNum + "/" + pageSize + "/" + title,
+					url:"/product/" + pageNum + "/" + pageSize + "/" + title,
 					dataType:"json",
 					success:function (res) {
 						if(res.state==200){
@@ -193,8 +197,6 @@
 					});
 				}
 			}
-
-
 			//页面加载时自动启动
 			$(function () {
 				searchByTitle(num,12,title);

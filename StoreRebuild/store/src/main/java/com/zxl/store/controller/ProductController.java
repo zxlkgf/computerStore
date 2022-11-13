@@ -49,7 +49,7 @@ public class ProductController extends BaseController {
         return new JsonResult<>(OK,data);
     }
 
-    @RequestMapping(value = "/findWithTitle")
+    @RequestMapping(value = "/{pageNum}/{pageSize}/{title}",method = RequestMethod.GET)
     public JsonResult<PageInfo<Product>> findWithTitle(@PathVariable("pageNum") Integer pageNum,
                                                        @PathVariable("pageSize") Integer pageSize,
                                                        @PathVariable("title") String title){
